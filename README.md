@@ -1,5 +1,5 @@
-# Storybooks app
- App to test out handlebars, uses google API for login, allows users to share stories or log private stories. Basic framework for another project.
+# Recipebooks app
+ Basic recipe app ( more features on the way ), tired of crossing out recipes as im protyping and was unhappy with other recipes apps so decided to make my own.  
 
 <!-- **Link to project:** http://recruiters-love-seeing-live-demos.com/ -->
 
