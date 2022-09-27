@@ -1,0 +1,52 @@
+<%- include('partials/header') -%>
+
+    <!-- Page heading -->
+    <div class="flex flex-col my-5">
+      <h1
+        class="mb-4 text-4xl text-center mt-5 font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+        Public Recipes</h1>
+    </div>
+
+  <!-- Recipe cards -->
+    <div class="mt-5 lg:!mx-20 grid grid-cols-1 lg:!grid-cols-5">
+      <% recipes.forEach( recipe => { %>
+        <div class="m-2 rounded-lg border border-gray-200 bg-white hover:bg-gray-200  shadow-md dark:border-gray-700 dark:bg-gray-900 dark:hover:bg-gray-800">
+          <div class="grid grid-cols-2 lg:!grid-cols-1">
+            <div class="">
+              <a href="/recipe/showRecipe/<%= recipe._id %>">
+                <img class="rounded-tl-lg lg:rounded-t-lg" src="<%= recipe.image.slice(0,52) + 'w_500,h_500,c_scale' + recipe.image.slice(51) %>" alt="" />
+              </a>
+            </div>
+            <div class="p-5">
+              <a href="/recipe/showRecipe/<%= recipe._id %>">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  <%= recipe.title %>
+                </h5>
+              </a>
+            </div>
+          </div>
+          <div class=" grid grid-cols-2 w-full">
+            <a href="#"
+              class="inline-flex mx-1 my-1 items-center rounded-bl-lg bg-blue-700 py-2 px-3 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Recipe Author</a>
+            <% if(user.favorites.includes(recipe._id)){ %>
+              <form action="/recipe/removeFavorite/<%= recipe._id %>?_method=PUT" method="POST"
+                class="inline-flex mr-1 my-1 justify-center rounded-br-lg bg-yellow-700 py-2 px-3 text-center text-sm font-medium text-white hover:bg-yellow-600 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-yellow-500 dark:hover:bg-yellow-600 dark:focus:ring-blue-800">
+                <button class="w-full" type="submit">unfavorite</button>
+              </form>
+              <% } else { %>
+                <form action="/recipe/addFavorite/<%= recipe._id %>?_method=PUT" method="POST" class="inline-flex mr-1 my-1 justify-center rounded-br-lg bg-green-700 py-2 px-3 text-center text-sm font-medium text-white hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-blue-800">
+                  <button class="w-full" type="submit">favorite</button>
+                </form>
+                <% } %>
+          </div>
+        </div>
+        <% }) %>
+    </div>
+
+    <!-- recipe.image.slice(0,52) + 'w_70,h_53,c_scale' + recipe.image.slice(51) -->
+    
+  <!-- <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <path class="rating-star-filled"
+      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+  </svg> -->
+<%- include('partials/footer') -%>

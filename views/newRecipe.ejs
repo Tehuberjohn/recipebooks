@@ -1,0 +1,85 @@
+<%- include('partials/header') -%>
+
+    <div class="p-4 w-full mx-auto mt-10 max-w-4xl bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+        <form class="space-y-6" action="/recipe/createRecipe" enctype="multipart/form-data" method="POST">
+            <h5 class="text-xl font-medium text-gray-900 dark:text-white">Create new recipe</h5>
+            <div>
+                <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Recipe name</label>
+                <input type="text" name="title" id="title"
+                    class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Recipe name here" required="">
+            </div>
+
+            <!-- recipe status and image -->
+            <div class="grid gap-6 mb-6 md:grid-cols-2">
+                <div>
+                    <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Recipe status</label>
+                <select id="status" name="status"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" aria-placeholder="Public or Private recipe?">
+                    <option value="public">Public</option>
+                    <option value="private">Private</option>
+                </select>
+                </div>
+                <div>
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" for="imgUpload">Add image</label>
+                    <input
+                        class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                        type="file" id="imageUpload" name="file">
+                </div>
+            </div>
+
+            <!-- ingredient form -->
+            <div>
+                <label for="ingredient" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Add ingredient to list</label>
+                <div class="relative">
+                    <input type="search" id="ingredient"
+                        class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Ingredient">
+                    <a href="#" id="addIngredient"
+                        class="text-white absolute right-0 bottom-0.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-3 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add ingredient</a>
+                </div>
+            </div>
+
+            <!-- ingredient list -->
+            <div class="overflow-x-auto relative">
+                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                        <thead class="text-xs text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                <th scope="col" class="absolute py-3 px-1/2 left-2 text-left">
+                                    Ingredients
+                                </th>
+                                <th scope="col" class="py-3 px-1/2 text-center">
+                                    Delete
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="ingredientList">
+                        </tbody>
+                    </table>
+                </div>
+            
+            <!-- recipe method -->
+            <label for="method" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Recipe method</label>
+            <textarea id="method" rows="4" name="method"
+                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Recipe method..."></textarea>
+            
+            <!-- confirmation checkbox -->
+            <div class="flex items-start">
+                <div class="flex items-start">
+                    <div class="flex items-center h-5">
+                        <input id="remember" type="checkbox" value=""
+                            class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                            required="">
+                    </div>
+                    <label for="remember" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">confirm</label>
+                </div>
+                <a href="#" class="ml-auto text-sm text-blue-700 hover:underline dark:text-blue-500"></a>
+            </div>
+            <button type="submit"
+                class="w-full text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-blue-800" value="Upload">Submit recipe</button>
+
+        </form>
+    </div>
+
+    <%- include('partials/footer') -%>
