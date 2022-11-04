@@ -1,5 +1,5 @@
 # Recipebooks app
- Basic recipe app ( more features on the way ), tired of crossing out recipes as im protyping and was unhappy with other recipes apps so decided to make my own.  
+ Recipe social network, a place where families can share recipes together, or store and favorite their own. Basic implimentation is online, people can create recipes and favorite recipes.
 
 <!-- **Link to project:** http://recruiters-love-seeing-live-demos.com/ -->
 
